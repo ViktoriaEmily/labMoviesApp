@@ -11,13 +11,12 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 
-
-const formControl = 
-  {
-    margin: 1,
-    minWidth: 220,
-    backgroundColor: "rgb(255, 255, 255)"
-  };
+const formControl=
+{
+  margin:1,
+  minWidth: 220,
+  backgroundColor: "rgb(255,255,255)"
+};
   
   export default function FilterMoviesCard(props) {
     const [genres, setGenres] = useState([{ id: '0', name: "All" }])
@@ -25,22 +24,23 @@ const formControl =
     useEffect(() => {
       fetch(
         "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
-          process.env.REACT_APP_TMDB_KEY
+          process.env.REACT_APP_TMDB_KEY +
+          "&language=en-US"
       )
-        .then(res => res.json())
+        .then((res) => res.json())
         .then(json => {
-          // console.log(json.genres) 
+          // console.log(json.genres)
           return json.genres
         })
-    //     .then(apiGenres => {
-    //       setGenres([genres[0], ...apiGenres]);
-    //     });
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, []);
-      
+        .then(apiGenres => {
+          setGenres([genres[0], ...apiGenres]);
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     const handleChange = (e, type, value) => {
       e.preventDefault()
-      // Completed later
+      props.onUserInput(type,value)
+      // New
     };
     const handleTextChange = e => {
       handleChange(e, "name", e.target.value)
