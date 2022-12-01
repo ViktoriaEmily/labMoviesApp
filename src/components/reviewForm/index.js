@@ -12,8 +12,6 @@ import ratings from "./ratingCategories";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
-const [open, setOpen] = React.useState(false);  //NEW
-
 const ReviewForm = ({ movie }) => {
   const defaultValues = {
     author: "",
@@ -37,6 +35,8 @@ const ReviewForm = ({ movie }) => {
     setRating(event.target.value);
   };
 
+  const [open, setOpen] = React.useState(false);  //NEW
+
   const handleSnackClose = (event) => {
     setOpen(false);
     navigate("/movies/favourites");
@@ -49,23 +49,6 @@ const ReviewForm = ({ movie }) => {
     context.addReview(movie, review);
     setOpen(true); // NEW
   };
-
-  <Snackbar
-  sx={styles.snack}
-  anchorOrigin={{ vertical: "top", horizontal: "right" }}
-  open={open}
-  onClose={handleSnackClose}
->
-  <Alert
-    severity="success"
-    variant="filled"
-    onClose={handleSnackClose}
-  >
-    <Typography variant="h4">
-      Thank you for submitting a review
-    </Typography>
-  </Alert>
-</Snackbar>
 
   return (
     <Box component="div" sx={styles.root}>
@@ -97,6 +80,24 @@ const ReviewForm = ({ movie }) => {
             {errors.author.message}
           </Typography>
         )}
+
+<Snackbar
+  sx={styles.snack}
+  anchorOrigin={{ vertical: "top", horizontal: "right" }}
+  open={open}
+  onClose={handleSnackClose}
+>
+  <Alert
+    severity="success"
+    variant="filled"
+    onClose={handleSnackClose}
+  >
+    <Typography variant="h4">
+      Thank you for submitting a review
+    </Typography>
+  </Alert>
+</Snackbar>
+
         <Controller
           name="review"
           control={control}

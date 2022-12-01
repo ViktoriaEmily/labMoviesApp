@@ -1,16 +1,23 @@
 import React from "react";
 import MovieCard from "../components/movieCard";
 import SampleMovie from "./sampleData";
+import { MemoryRouter } from "react-router";
+import MoviesContextProvider from "../contexts/moviesContext";
 
 export default {
   title: "Home Page/MovieCard",
   component: MovieCard,
+  decorators: [
+    (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
+    (Story) => <MoviesContextProvider>{Story()}</MoviesContextProvider>,
+  ],
 };
 
 export const Basic = () => {
   return (
     <MovieCard
       movie={SampleMovie}
+      
     />
   );
 };
@@ -24,4 +31,5 @@ export const Exceptional = () => {
     />
   );
 };
+
 Exceptional.storyName = "exception";
