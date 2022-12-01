@@ -1,7 +1,6 @@
 import React, { useContext  } from "react";
 import Avatar from '@mui/material/Avatar';
 import { Link } from "react-router-dom";
-import React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";

@@ -14,23 +14,6 @@ import Alert from "@mui/material/Alert";
 
 const [open, setOpen] = React.useState(false);  //NEW
 
-<Snackbar
-        sx={styles.snack}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        open={open}
-        onClose={handleSnackClose}
-      >
-        <Alert
-          severity="success"
-          variant="filled"
-          onClose={handleSnackClose}
-        >
-          <Typography variant="h4">
-            Thank you for submitting a review
-          </Typography>
-        </Alert>
-      </Snackbar>
-      
 const ReviewForm = ({ movie }) => {
   const defaultValues = {
     author: "",
@@ -38,6 +21,7 @@ const ReviewForm = ({ movie }) => {
     agree: false,
     rating: "3",
   };
+
   const {
     control,
     formState: { errors },
@@ -65,6 +49,23 @@ const ReviewForm = ({ movie }) => {
     context.addReview(movie, review);
     setOpen(true); // NEW
   };
+
+  <Snackbar
+  sx={styles.snack}
+  anchorOrigin={{ vertical: "top", horizontal: "right" }}
+  open={open}
+  onClose={handleSnackClose}
+>
+  <Alert
+    severity="success"
+    variant="filled"
+    onClose={handleSnackClose}
+  >
+    <Typography variant="h4">
+      Thank you for submitting a review
+    </Typography>
+  </Alert>
+</Snackbar>
 
   return (
     <Box component="div" sx={styles.root}>
