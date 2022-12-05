@@ -15,17 +15,17 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { MoviesContext } from "../../contexts/moviesContext";
-import SimilarMovies from "../../pages/similarMovies";
+
 
 
 export default function MovieCard({ movie, action }) {
-  const { favourites,} = useContext(MoviesContext);
+  const { favourites} = useContext(MoviesContext);
  
-  //  if (favourites.find((id) => id === movie.id)) {
-  //    movie.favourite = true;
-  //  } else {
-  //    movie.favourite = false
-  //  }
+   if (favourites.find((id) => id === movie.id)) {
+     movie.favourite = true;
+   } else {
+     movie.favourite = false
+   }
  
   //  const handleAddToFavourite = (e) => {
   //    e.preventDefault();

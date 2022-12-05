@@ -5,10 +5,15 @@ import Spinner from '../components/spinner';
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import { getSimilarMovies } from "../api/tmdb-api";
 //import { getMovie } from "../api/tmdb-api";
+import { useParams } from 'react-router-dom';
 
 const SimilarMovies = (props) => {
+    const { id } = useParams();
 
-  const {  data, error, isLoading, isError }  = useQuery('discover', getSimilarMovies)
+    const { data, error, isLoading, isError } = useQuery(
+      ["movies", { id: id }],
+      getSimilarMovies
+    );
 
   if (isLoading) {
     return <Spinner />
