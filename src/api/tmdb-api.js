@@ -1,3 +1,37 @@
+export const getSimilarMovies = (args) => {
+  console.log(args)
+ const [, idPart] = args.queryKey;
+ const { id } = idPart;
+ return fetch(
+  `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+ ).then((response) => {
+   if (!response.ok) {
+     throw new Error(response.json().message);
+   }
+   return response.json();
+ })
+ .catch((error) => {
+   throw error
+});
+};
+
+
+export const getNowPlaying = () => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+
+  ).then((response) => {
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    return response.json();
+  })
+  .catch((error) => {
+     throw error
+  });
+};
+
+
 export const getLatestMovies = () => {
   return fetch(
     `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
@@ -12,6 +46,7 @@ export const getLatestMovies = () => {
      throw error
   });
 };
+
 
 export const getTopRatedMovies = () => {
   return fetch(
@@ -28,6 +63,7 @@ export const getTopRatedMovies = () => {
   });
 };
 
+
 export const getMovies = () => {
   return fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
@@ -42,7 +78,8 @@ export const getMovies = () => {
   });
 };
   
-  export const getMovie = (args) => {
+
+export const getMovie = (args) => {
      console.log(args)
     const [, idPart] = args.queryKey;
     const { id } = idPart;
@@ -59,6 +96,7 @@ export const getMovies = () => {
    });
   };
   
+
   export const getGenres = async () => {
     return fetch(
       "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
@@ -75,6 +113,7 @@ export const getMovies = () => {
    });
   };
   
+
   export const getMovieImages = ({ queryKey }) => {
     const [, idPart] = queryKey;
     const { id } = idPart;
@@ -94,6 +133,7 @@ export const getMovies = () => {
   };
   
 
+  
   export const getMovieReviews = (id) => {
     return fetch(
       `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.REACT_APP_TMDB_KEY}`

@@ -15,6 +15,7 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { MoviesContext } from "../../contexts/moviesContext";
+import SimilarMovies from "../../pages/similarMovies";
 
 
 export default function MovieCard({ movie, action }) {
@@ -80,6 +81,12 @@ export default function MovieCard({ movie, action }) {
     <Link to={`/movies/${movie.id}`}>
       <Button variant="outlined" size="medium" color="primary">
         More Info ...
+      </Button>
+    </Link>
+  
+    <Link to={`pages/similarMovies/${movie.id}`}>
+      <Button variant="outlined" size="large" color="primary">
+        Similar Movies
       </Button>
     </Link>
   </CardActions>
