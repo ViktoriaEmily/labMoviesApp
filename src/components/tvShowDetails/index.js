@@ -20,7 +20,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const tvShowDetails = ({ shows }) => {  // Don't miss this!
+const TvShowDetails = ({ show }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
 
 
@@ -31,7 +31,7 @@ const tvShowDetails = ({ shows }) => {  // Don't miss this!
       </Typography>
 
       <Typography variant="h6" component="p">
-        {shows.overview}
+        {show.overview}
       </Typography>
 
       <Paper 
@@ -41,23 +41,20 @@ const tvShowDetails = ({ shows }) => {  // Don't miss this!
         <li>
           <Chip label="Genres" sx={chip} color="primary" />
         </li>
-        {shows.genres.map((g) => (
+        {show.genres.map((g) => (
           <li key={g.name}>
             <Chip label={g.name} sx={chip} />
           </li>
         ))}
       </Paper>
       <Paper component="ul" sx={root}>
-        <Chip icon={<AccessTimeIcon />} label={`${shows.runtime} min.`} />
-        <Chip
-          icon={<MonetizationIcon />}
-          label={`${shows.revenue.toLocaleString()}`}
-        />
+        <Chip icon={<AccessTimeIcon />} label={`${show.runtime} min.`} />
+     
         <Chip
           icon={<StarRate />}
-          label={`${shows.vote_average} (${shows.vote_count}`}
+          label={`${show.vote_average} (${show.vote_count}`}
         />
-        <Chip label={`Released: ${shows.release_date}`} />
+        <Chip label={`Released: ${show.release_date}`} />
       </Paper>
       <Paper 
         component="ul" 
@@ -66,13 +63,13 @@ const tvShowDetails = ({ shows }) => {  // Don't miss this!
         <li>
           <Chip label="Production Countries" sx={chip} color="primary" />
         </li>
-        {shows.production_countries.map((c) => (
+        {show.production_countries.map((c) => (
           <li key={c.name}>
             <Chip label={c.name} sx={chip} />
           </li>
         ))}
       </Paper>
-      <Fab
+      {/* <Fab
         color="secondary"
         variant="extended"
         onClick={() =>setDrawerOpen(true)}
@@ -84,12 +81,12 @@ const tvShowDetails = ({ shows }) => {  // Don't miss this!
       >
         <NavigationIcon />
         Reviews
-      </Fab>
-      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <tvShowReviews shows={shows} />
-      </Drawer>
+      </Fab> */}
+      {/* <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+        <tvShowReviews shows={show} />
+      </Drawer> */}
     </>
   );
 };
 
-export default tvShowDetails ;
+export default TvShowDetails ;

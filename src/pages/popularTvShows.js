@@ -1,13 +1,13 @@
 import React from "react";
-import PageTemplate from '../components/templateMovieListPage';
+import PageTemplate from '../components/templateShowListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
-import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
+import AddToFavouritesIcon from '../components/cardIcons/addToFavouritesTV'
 import { getPopularTvShows } from "../api/tv-tmdb-api";
 //import tvListHeaderStories from "../stories/tvListHeader.stories";
 
 
-const PopularTvShowS = (props) => {
+const PopularTvShows = (props) => {
 
   const {  data, error, isLoading, isError }  = useQuery('discover', getPopularTvShows)
 
@@ -36,4 +36,4 @@ const PopularTvShowS = (props) => {
 );
 };
 
-export default PopularTvShowS;
+export default PopularTvShows;
